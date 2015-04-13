@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B17AEF621ADB6C03001234A0 /* KeyBoardLinkMoveUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = B17AEF611ADB6C03001234A0 /* KeyBoardLinkMoveUtility.m */; };
 		B187EAAE1AD8EEF700513360 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B187EAAD1AD8EEF700513360 /* main.m */; };
 		B187EAB11AD8EEF700513360 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B187EAB01AD8EEF700513360 /* AppDelegate.m */; };
 		B187EAB41AD8EEF700513360 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B187EAB31AD8EEF700513360 /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B17AEF601ADB6C03001234A0 /* KeyBoardLinkMoveUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyBoardLinkMoveUtility.h; sourceTree = "<group>"; };
+		B17AEF611ADB6C03001234A0 /* KeyBoardLinkMoveUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyBoardLinkMoveUtility.m; sourceTree = "<group>"; };
 		B187EAA81AD8EEF700513360 /* KeyBoardLinkMove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyBoardLinkMove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B187EAAC1AD8EEF700513360 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B187EAAD1AD8EEF700513360 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -60,9 +63,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B17AEF5F1ADB6C03001234A0 /* BREF_KeyBoardLinkMove */ = {
+			isa = PBXGroup;
+			children = (
+				B17AEF601ADB6C03001234A0 /* KeyBoardLinkMoveUtility.h */,
+				B17AEF611ADB6C03001234A0 /* KeyBoardLinkMoveUtility.m */,
+			);
+			path = BREF_KeyBoardLinkMove;
+			sourceTree = "<group>";
+		};
 		B187EA9F1AD8EEF700513360 = {
 			isa = PBXGroup;
 			children = (
+				B17AEF5F1ADB6C03001234A0 /* BREF_KeyBoardLinkMove */,
 				B187EAAA1AD8EEF700513360 /* KeyBoardLinkMove */,
 				B187EAC41AD8EEF800513360 /* KeyBoardLinkMoveTests */,
 				B187EAA91AD8EEF700513360 /* Products */,
@@ -221,6 +234,7 @@
 			files = (
 				B187EAB41AD8EEF700513360 /* ViewController.m in Sources */,
 				B187EAB11AD8EEF700513360 /* AppDelegate.m in Sources */,
+				B17AEF621ADB6C03001234A0 /* KeyBoardLinkMoveUtility.m in Sources */,
 				B187EAAE1AD8EEF700513360 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +428,7 @@
 				B187EACD1AD8EEF800513360 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B187EACE1AD8EEF800513360 /* Build configuration list for PBXNativeTarget "KeyBoardLinkMoveTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +437,7 @@
 				B187EAD01AD8EEF800513360 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
