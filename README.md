@@ -6,6 +6,6 @@
   大部分涉及聊天功能的应用中,都可以使用此代码.
   
 - 使用方法
-  下载完code以后将KeyBoardLinkMoveUtility.h以及.m文件导入工程,并在Controller中引用.
-  
+  下载完code以后将KeyBoardLinkMoveUtility.h以及.m文件导入工程,并使用这一句代码:
+  [[KeyBoardLinkMoveUtility sharedInstance] addObserverWithLinkView:_inputView];
   
