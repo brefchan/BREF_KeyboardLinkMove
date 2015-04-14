@@ -10,8 +10,8 @@
 
 @interface KeyBoardLinkMoveUtility : NSObject
 
-+ (void)keyboardWillShow:(NSNotification *)notif linkView:(UIView *)view;
++ (KeyBoardLinkMoveUtility *)sharedInstance;
 
-+ (void)keyboardWillHidden:(NSNotification *)notif linkView:(UIView *)view;
+- (void)addObserverWithLinkView:(UIView *)view;
 
 @end

@@ -8,9 +8,49 @@
 
 #import "KeyBoardLinkMoveUtility.h"
 
+static KeyBoardLinkMoveUtility *_shareInstance = nil;
+
+@interface KeyBoardLinkMoveUtility()
+
+@property (weak, nonatomic) UIView *linkView;
+
+@end
+
 @implementation KeyBoardLinkMoveUtility
 
-+ (void)keyboardWillShow:(NSNotification *)notif linkView:(UIView *)view
++ (KeyBoardLinkMoveUtility *)sharedInstance
+{
+    @synchronized([KeyBoardLinkMoveUtility class]){
+        if (!_shareInstance) {
+            _shareInstance = [[KeyBoardLinkMoveUtility alloc] init];
+        }
+        return _shareInstance;
+    }
+    return nil;
+}
+
++ (id)alloc
+{
+    @synchronized([KeyBoardLinkMoveUtility class])
+    {
+        if (!_shareInstance) {
+            _shareInstance = [super alloc];
+        }
+        return _shareInstance;
+    }
+    return nil;
+}
+
+
+- (void)addObserverWithLinkView:(UIView *)view
+{
+    self.linkView = view;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+
+- (void)keyboardWillShow:(NSNotification *)notif
 {
     
     NSDictionary *userInfo = [notif userInfo];
@@ -18,8 +58,8 @@
     
     CGRect keyboardRect = [value CGRectValue];
     
-    CGRect newTextViewFrame = view.frame;
-    newTextViewFrame.origin.y = keyboardRect.origin.y - view.frame.size.height;
+    CGRect newTextViewFrame = _linkView.frame;
+    newTextViewFrame.origin.y = keyboardRect.origin.y - _linkView.frame.size.height;
     
     NSValue *animationDurationValue = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     NSTimeInterval animationDuration;
@@ -34,15 +74,15 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:animationDuration];
     [UIView setAnimationCurve:(UIViewAnimationCurve)animationCurve];
-    view.frame = newTextViewFrame;
+    _linkView.frame = newTextViewFrame;
     [UIView commitAnimations];
 
 }
 
-+ (void)keyboardWillHidden:(NSNotification *)notif linkView:(UIView *)view
+- (void)keyboardWillHidden:(NSNotification *)notif
 {
-    CGRect newTextViewFrame = view.frame;
-    newTextViewFrame.origin.y = [view superview].frame.size.height - view.frame.size.height;
+    CGRect newTextViewFrame = _linkView.frame;
+    newTextViewFrame.origin.y = [_linkView superview].frame.size.height - _linkView.frame.size.height;
     
     NSDictionary *userInfo = [notif userInfo];
     //键盘的动画时间,设定与其完全一致
@@ -59,8 +99,13 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:animationDuration];
     [UIView setAnimationCurve:(UIViewAnimationCurve)animationCurve];
-    view.frame = newTextViewFrame;
+    _linkView.frame = newTextViewFrame;
     [UIView commitAnimations];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
